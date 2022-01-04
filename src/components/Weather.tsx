@@ -53,8 +53,8 @@ const Weather: React.FC<weather> = (data) => {
             <div id={background} className='weatherMain' >
                 <div className='weatherMainUpper'>
                     <div className='weatherIcons'>
-                        <ArrowBackIcon fontSize='large' onClick={() => data.myDispatch({type: 'SET', payload: {city: '', data: null , validate: true  }}) } />
-                        <RefreshIcon fontSize='large' onClick={() => refresh()} />
+                        <ArrowBackIcon fontSize='inherit' onClick={() => data.myDispatch({type: 'SET', payload: {city: '', data: null , validate: true  }}) } />
+                        <RefreshIcon fontSize='inherit' onClick={() => refresh()} />
                     </div>
                     
                     <div className='weather'>
@@ -66,7 +66,7 @@ const Weather: React.FC<weather> = (data) => {
                     </div>
                 </div>
 
-                <div className='otherInfoMain'>
+                <div className='weatherMainBottom'>
                     <div>
                         <div>
                             <span>SUNRISE</span>

@@ -3,20 +3,20 @@ body{
   padding: 0;
 }
 
-.Main1{
+/* .Main1{
   display: flex;
   flex-direction: column;
-}
+} */
 
-.Main1 p{
+/* .Main1 p{
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   font-weight: 400;
   color: white;
-}
+} */
 
 #displayMainMorn{
   background-image: url(./Animations/homeMorn.gif);
-  background-repeat: repeat;
+  background-repeat: no-repeat;
   width: 100vw;
   height: 100vh;
   object-fit: cover;
@@ -58,7 +58,7 @@ body{
 
 #displayMainNight{
   background-image: url(./Animations/homeNight.gif);
-  background-repeat: repeat;
+  background-repeat: no-repeat;
   width: 100vw;
   height: 100vh;
   object-fit: cover;
@@ -81,10 +81,12 @@ body{
 .weatherMain{
   display: flex;
   flex-direction: column;
+
 }
 
 .weatherMain > *{
   flex: 1 1 auto;
+  backdrop-filter: blur(3px) brightness(80%);
 }
 
 .weatherMainUpper{
@@ -96,26 +98,28 @@ body{
 .weatherIcons{
   flex-basis: 33.333333%;
   max-width: 33.333333%;
-  
+  font-size: 30px;
 }
 
 .weatherIcons > *{
   box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.25);
   border-radius: 20px;
   padding: 1px 10px;
-  margin: 20px 0 0 30px;
+  margin: 30px 0 0 30px;
   position: relative;
   background-image: linear-gradient(to right, rgba(118, 167, 187, 0.644), rgba(243, 243, 92, 0.698))
 }
 
 .weatherLoader{
-  padding-top: 30px;
+  padding-top: 40vh;
   text-align: center;
 }
 
+
+
 #weatherClearMorn{
   background-image: url(./Animations/sunny.gif);
-  background-repeat: repeat;
+  background-repeat: no-repeat;
   width: 100vw;
   height: 100vh;
   object-fit: cover;
@@ -129,7 +133,7 @@ body{
 
 #weatherClearNight{
   background-image: url(./Animations/clearNight.gif);
-  background-repeat: repeat;
+  background-repeat: no-repeat;
   width: 100vw;
   height: 100vh;
   object-fit: cover;
@@ -147,7 +151,7 @@ body{
 
 #weatherFoggyMorn{
   background-image: url(./Animations/foggyMorn.gif);
-  background-repeat: repeat;
+  background-repeat: no-repeat;
   width: 100vw;
   height: 100vh;
   object-fit: cover;
@@ -161,7 +165,7 @@ body{
 
 #weatherFoggyNight{
   background-image: url(./Animations/foggyNight.gif);
-  background-repeat: repeat;
+  background-repeat: no-repeat;
   width: 100vw;
   height: 100vh;
   object-fit: cover;
@@ -181,6 +185,7 @@ body{
   align-items: center;
   position: relative;
   padding-top: 20px;
+  font-size: 16px;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
@@ -202,20 +207,21 @@ body{
 }
 
 
-.otherInfoMain{
-  backdrop-filter: blur(3px) brightness(80%);
+/* weatherBottom */
+
+.weatherMainBottom{
   width: 100vw;
 }
 
-.otherInfoMain > * {
+.weatherMainBottom > * {
   display: flex;
   flex-direction: row;
   justify-content: center;
   border-bottom: 2px solid whitesmoke;
-  margin: 0 30px;
+  margin: 0 5vw;
 }
 
-.otherInfoMain > * > *{
+.weatherMainBottom > * > *{
   flex-basis: 50%;
   max-width: 50%;
   text-align: center;
@@ -225,8 +231,25 @@ body{
   margin: 15px 0;
 }
 
-.otherInfoMain > * > * :nth-child(2){
+.weatherMainBottom > * > * :nth-child(2){
   font-size: 30px;
 }
 
 
+@media screen and (max-width: 320px){
+  .weather{
+    font-size: 13px;
+  }
+
+  .weather h2{
+    font-size: 40px;
+  }
+
+  .weatherIcons{
+    font-size: 20px;
+  }
+
+  .weatherMainBottom > * > * :nth-child(2){
+    font-size: 25px;
+  }
+}
