@@ -54,6 +54,9 @@ export const Data = async (city: string) => {
         return time;
     }
 
+    var timezone = new Date(data.timezone * 1000);
+    var hour = timezone.getHours();
+    
     let weather: weatherData = {
         name: data.name,
         feel: Math.round(data.main.feels_like - 273.15),
@@ -64,7 +67,8 @@ export const Data = async (city: string) => {
         weatherDesc: data.weather[0].main,
         sunRise: timeConverter(data.sys.sunrise),
         sunSet: timeConverter(data.sys.sunset),
-        lastUpdateTime: timeConverter(data.dt)
+        lastUpdateTime: timeConverter(data.dt),
+        timezoneHour: hour
     }
 
     return weather;

@@ -8,7 +8,8 @@ export type weatherData = {
     weatherDesc: string
     sunRise: string,
     sunSet: string,
-    lastUpdateTime: string
+    lastUpdateTime: string,
+    timezoneHour: number 
 }
 
 // checking
@@ -49,16 +50,9 @@ export type myDispatch = (a: myDispatchProps) => void;
 
 export type myReducer<reducerState, reducerAction> = (state: reducerState, action: reducerAction ) => reducerState;
 
-export type form = {
-    state: reducerState,
-    timeHour: number,
-    myDispatch: myDispatch
-}
-
 export type weather = {
     state: reducerState,
     weatherObj: weatherData,
-    timeHour: number,
     myDispatch: myDispatch
 }
 

@@ -3,51 +3,174 @@ body{
   padding: 0;
 }
 
-/* .Main1{
-  display: flex;
-  flex-direction: column;
-} */
+@media screen and (min-width: 1008px) {
+  #displayMainNight{
+    /* background-image: url(./Animations/homeNightLarge.gif); */
+    background-color: #070b47;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+  }
 
-/* .Main1 p{
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  font-weight: 400;
-  color: white;
-} */
 
-#displayMainMorn{
-  background-image: url(./Animations/homeMorn.gif);
-  background-repeat: no-repeat;
-  width: 100vw;
-  height: 100vh;
-  object-fit: cover;
-  position: fixed;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  z-index: -1;
- 
+  #displayMainNight > :nth-child(1) :nth-child(1){
+    background-image: url(./Animations/homeNight1.gif);
+    background-size: 300px;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: fixed;
+    z-index: -1;
+  }  
+
+  #displayMainNight > *{
+    text-align: center;
+    color: white;
+  }
+
+  #displayMainMorn{
+    /* background-image: url(./Animations/cloudyWeather.svg); */
+    background-color: #55aacd;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+  }
+
+  #displayMainMorn > :nth-child(1) :nth-child(1){
+    background-image: url(./Animations/homeMorn1.gif);
+    background-size: 300px;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: fixed;
+    z-index: -1;
+  }  
+  
+  #displayMainMorn > *{
+    text-align: center;
+    color: black;
+  }
 }
 
-#displayMainMorn > *{
-  text-align: center;
-  color: black;
+@media screen and (min-width: 641px) and (max-width: 1007px) {
+  #displayMainNight{
+    /* background-image: url(./Animations/homeNightMedium.gif); */
+    background-color: #070b47;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+  }
+
+  #displayMainNight > :nth-child(1) :nth-child(1){
+    background-image: url(./Animations/homeNight1.gif);
+    background-size: 200px;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: fixed;
+    z-index: -1;
+  }  
+  
+  #displayMainNight > *{
+    text-align: center;
+    color: white;
+  }
+
+  #displayMainMorn{
+    /* background-image: url(./Animations/homeMorn.gif); */
+    background-color: #55aacd;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+   
+  }
+
+  #displayMainMorn > :nth-child(1) :nth-child(1){
+    background-image: url(./Animations/homeMorn1.gif);
+    background-size: 200px;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: fixed;
+    z-index: -1;
+  }  
+  
+  #displayMainMorn > *{
+    text-align: center;
+    color: black;
+  }
+
 }
 
-.display > :nth-child(2){
+@media screen and (max-width: 640px) {
+  #displayMainNight{
+    /* background-image: url(./Animations/homeNightSmall.gif); */
+    background-color: #070b47;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+  }
+
+  #displayMainNight > :nth-child(1) :nth-child(1){
+    background-image: url(./Animations/homeNight1.gif);
+    background-size: 150px;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: fixed;
+    z-index: -1;
+  }  
+  
+  #displayMainNight > *{
+    text-align: center;
+    color: white;
+  }
+
+  #displayMainMorn{
+    /* background-image: url(./Animations/homeMorn.gif); */
+    background-color: #55aacd;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+  }
+
+  #displayMainMorn > :nth-child(1) :nth-child(1){
+    background-image: url(./Animations/homeMorn1.gif);
+    background-size: 150px;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: fixed;
+    z-index: -1;
+  }  
+  
+  #displayMainMorn > *{
+    text-align: center;
+    color: black;
+  }
+
+}
+
+.display > :nth-child(3){
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.display > :nth-child(2) input{
+.display > :nth-child(3) input{
   margin-bottom: 10px;
   padding: 5px 5px;
   border: 1px solid gray;
   border-radius: 6px;
 }
 
-.display > :nth-child(2) button{
+.display > :nth-child(3) button{
   padding: 10px 25px;
   border: 1px solid rgb(129, 126, 126);
   border-radius: 20px;
@@ -56,24 +179,7 @@ body{
 
 /* for night */
 
-#displayMainNight{
-  background-image: url(./Animations/homeNight.gif);
-  background-repeat: no-repeat;
-  width: 100vw;
-  height: 100vh;
-  object-fit: cover;
-  position: fixed;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  z-index: -1;
-}
 
-#displayMainNight > *{
-  text-align: center;
-  color: white;
-}
 
 
 /* Weather Component CSS Below */
@@ -86,7 +192,7 @@ body{
 
 .weatherMain > *{
   flex: 1 1 auto;
-  backdrop-filter: blur(3px) brightness(80%);
+  backdrop-filter: blur(2px) brightness(80%);
 }
 
 .weatherMainUpper{
@@ -115,14 +221,12 @@ body{
   text-align: center;
 }
 
-
-
 #weatherClearMorn{
-  background-image: url(./Animations/sunny.gif);
+  background-image: url(./Animations/clearMornWeather.svg);
   background-repeat: no-repeat;
   width: 100vw;
   height: 100vh;
-  object-fit: cover;
+  background-size: cover;
   position: fixed;
   left: 0;
   right: 0;
@@ -132,11 +236,11 @@ body{
 }
 
 #weatherClearNight{
-  background-image: url(./Animations/clearNight.gif);
+  background-image: url(./Animations/clearNightWeather.svg);
   background-repeat: no-repeat;
   width: 100vw;
   height: 100vh;
-  object-fit: cover;
+  background-size: cover;
   position: fixed;
   left: 0;
   right: 0;
@@ -150,11 +254,11 @@ body{
 }
 
 #weatherFoggyMorn{
-  background-image: url(./Animations/foggyMorn.gif);
+  background-image: url(./Animations/foggyMornWeather.svg);
   background-repeat: no-repeat;
   width: 100vw;
   height: 100vh;
-  object-fit: cover;
+  background-size: cover;
   position: fixed;
   left: 0;
   right: 0;
@@ -162,13 +266,14 @@ body{
   bottom: 0;
   z-index: -1;
 }
+
 
 #weatherFoggyNight{
-  background-image: url(./Animations/foggyNight.gif);
+  background-image: url(./Animations/foggyMornWeather.svg);
   background-repeat: no-repeat;
   width: 100vw;
   height: 100vh;
-  object-fit: cover;
+  background-size: cover;
   position: fixed;
   left: 0;
   right: 0;
@@ -177,7 +282,76 @@ body{
   z-index: -1;
 }
 
-.weather{
+#weatherFoggyNight > *{
+  color: white;
+}
+
+#weatherCloudyMorn{
+  background-image: url(./Animations/cloudyMornWeather.svg);
+  background-repeat: no-repeat;
+  width: 100vw;
+  height: 100vh;
+  background-size: cover;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: -1;
+}
+
+
+#weatherCloudyNight{
+  background-image: url(./Animations/cloudyNightWeather.svg);
+  background-repeat: no-repeat;
+  width: 100vw;
+  height: 100vh;
+  background-size: cover;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: -1;
+}
+
+#weatherCloudyNight > *{
+  color: white;
+}
+
+#weatherRainMorn{
+  background-image: url(./Animations/rainMornWeather.svg);
+  background-repeat: no-repeat;
+  width: 100vw;
+  height: 100vh;
+  background-size: cover;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: -1;
+}
+
+#weatherRainNight{
+  background-image: url(./Animations/rainNightWeather.svg);
+  background-repeat: no-repeat;
+  width: 100vw;
+  height: 100vh;
+  background-size: cover;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: -1;
+}
+
+#weatherRainNight > *{
+  color: white;
+}
+
+.weatherMainData{
   flex-basis: 33.333333%;
   max-width: 33.333333%;
   display: flex;
@@ -189,17 +363,19 @@ body{
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
-.weather > *:not(.weather h1, .weather h2){
+.weatherMainData > *:not(.weatherMainData h1, .weatherMainData h2){
   font-weight: 500;
 }
 
-.weather h1{
+.weatherMainData h1{
+  font-size: 25px;
   font-weight: 600;
   padding: 0;
   margin: 0;
+  white-space: nowrap;
 }
 
-.weather h2{
+.weatherMainData h2{
   font-size: 60px;
   font-weight: 100;
   padding: 0;
@@ -235,13 +411,37 @@ body{
   font-size: 30px;
 }
 
-
-@media screen and (max-width: 320px){
-  .weather{
+@media screen and (min-width: 321px) and (max-width: 750px){
+  .weatherMainData{
     font-size: 13px;
   }
 
-  .weather h2{
+  .weatherMainData h1{
+    font-size: 20px;
+    white-space: nowrap;
+  }
+
+  .weatherMainData h2{
+    font-size: 50px;
+  }
+
+  .weatherIcons{
+    font-size: 25px;
+  }
+
+}
+
+@media screen and (max-width: 320px){
+  .weatherMainData{
+    font-size: 10px;
+  }
+
+  .weatherMainData h1{
+    font-size: 15px;
+    white-space: nowrap;
+  }
+
+  .weatherMainData h2{
     font-size: 40px;
   }
 
