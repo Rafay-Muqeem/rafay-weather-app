@@ -269,7 +269,7 @@ body{
 
 
 #weatherFoggyNight{
-  background-image: url(./Animations/foggyMornWeather.svg);
+  background-image: url(./Animations/foggyNightWeather.svg);
   background-repeat: no-repeat;
   width: 100vw;
   height: 100vh;
