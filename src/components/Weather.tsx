@@ -15,6 +15,7 @@ const Weather: React.FC<weather> = (data) => {
 
     useEffect(() => {
         console.log("here");
+        console.log(data.weatherObj.timezoneHour);
         if (data.weatherObj.timezoneHour > 4 && data.weatherObj.timezoneHour < 18) {
             if (data.weatherObj.weatherDesc === 'Clear') {
                 setBackground('weatherClearMorn');

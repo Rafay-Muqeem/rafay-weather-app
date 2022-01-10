@@ -54,6 +54,8 @@ export const Data = async (city: string) => {
         return time;
     }
 
+    console.log(timeConverter(data.timezone));
+
     var timezone = new Date(data.timezone * 1000);
     var hour = timezone.getHours();
     

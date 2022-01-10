@@ -52,13 +52,10 @@ const Form = () => {
                 <div className='img1'>
 
                 </div>
-                <div className='img2'>
-
-                </div>
             </div>
             <h1>Weather App</h1>
             {formload ? <div> <CircularProgress color='info' /> </div> :
-                <div>
+                <div className='form'>
                     <input onKeyPress={(e) => onEnter(e)} type={"text"} value={state.city} onChange={(e) => dispatch({ type: 'SET', payload: { city: e.target.value, data: null, validate: state.validate } })} placeholder='City...' autoFocus />
                     <button onClick={() => Setter()} >Get Weather</button>
                     {!state.validate ? <p>No results found</p> : null}
