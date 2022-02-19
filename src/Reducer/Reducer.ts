@@ -1,26 +1,39 @@
 import React,{ useReducer } from "react";
-import { reducerState, reducerAction, myReducer } from "../Types/Types";
+import { reducerState, reducerState2, reducerAction, myReducer, reducerActions, wordSuggForm } from "../Types/Types";
 
 export const initialState: reducerState = {
+    cityID: 0,
     city: '',
     data: null,
     validate: true,
+    wordSuggArray: []
 }
 
-export const reducer: myReducer<reducerState, reducerAction> = (state: reducerState, action: reducerAction) => {
+export const reducer  = (state: reducerState = initialState, action: reducerAction): reducerState  => {
     switch(action.type){
-        case 'SET':
+        case reducerActions.SET:
             return ({
                 city: action.payload.city,
                 data: action.payload.data,
                 validate: action.payload.validate,
+                wordSuggArray: state.wordSuggArray
             });
 
-        // case 'SETCITY':
-        //     return {
-        //         city: action.payload
-        //     }
-                
+        case reducerActions.SETWORDSUGG:
+            return({
+                city: state.city,
+                data: state.data,
+                validate: state.validate,
+                wordSuggArray: [action.payload  , ...state.wordSuggArray!]
+            });
+
+        case reducerActions.RESETWORDSUGG:
+            return({
+                city: state.city,
+                data: state.data,
+                validate: state.validate,
+                wordSuggArray : []
+            })
         default:
             return state               
 
@@ -30,3 +43,4 @@ export const reducer: myReducer<reducerState, reducerAction> = (state: reducerSt
 
 
 
+// myReducer<reducerState, reducerAction>

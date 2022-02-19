@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useReducer } from 'react';
-import { weather, weatherData } from '../Types/Types';
+import { reducerActions, weather, weatherData } from '../Types/Types';
 import { Data } from '../service/Data';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import RefreshIcon from '@mui/icons-material/Refresh';
@@ -8,53 +8,89 @@ import { initialState, reducer } from '../Reducer/Reducer';
 
 const Weather: React.FC<weather> = (data) => {
 
-    const [state, dispatch] = useReducer(reducer, initialState);
-
+    const [state] = useReducer(reducer, initialState);
     let [background, setBackground] = useState<string>('');
     let [wthrload, setWthrload] = useState<boolean>(false);
 
     useEffect(() => {
-        console.log("here");
-        console.log(data.weatherObj.timezoneHour);
-        if (data.weatherObj.timezoneHour > 4 && data.weatherObj.timezoneHour < 18) {
-            if (data.weatherObj.weatherDesc === 'Clear') {
-                setBackground('weatherClearMorn');
+            if (data.weatherObj.isDay) {
+                if (data.weatherObj.weatherCond === 'Sunny' || data.weatherObj.weatherCond === 'Mostly sunny' ) {
+                    setBackground('weatherSunnyMorn');
+                }
+                else if(data.weatherObj.weatherCond === 'Partly Sunny' || data.weatherObj.weatherCond === 'Intermittent clouds') {
+                    setBackground('weatherPartlySunnyMorn');
+                }
+                else if(data.weatherObj.weatherCond === 'Mostly cloudy') {
+                    setBackground('weatherMostlyCloudyMorn');
+                }
+                else if(data.weatherObj.weatherCond === 'Cloudy') {
+                    setBackground('weatherCloudyMorn');
+                }
+                else if(data.weatherObj.weatherCond === 'Overcast') {
+                    setBackground('weatherOvercastMorn');
+                }
+                else if(data.weatherObj.weatherCond === 'Shower' || data.weatherObj.weatherCond === 'Rain') {
+                    setBackground('weatherRainMorn');
+                }
+                else if(data.weatherObj.weatherCond === 'Fog') {
+                    setBackground('weatherFogMorn');
+                }
+                else if(data.weatherObj.weatherCond === 'Snow') {
+                    setBackground('weatherSnowMorn');
+                }
+                else{
+                    setBackground('weatherSunnyMorn');
+                }
             }
-            else if(data.weatherObj.weatherDesc === 'Clouds') {
-                setBackground('weatherCloudyMorn');
+            else {
+                if (data.weatherObj.weatherCond === 'Clear' || data.weatherObj.weatherCond === 'Mostly clear') {
+                    setBackground('weatherClearNight');
+                }
+                else if (data.weatherObj.weatherCond === 'Partly cloudy' || data.weatherObj.weatherCond === 'Intermittent clouds') {
+                    setBackground('weatherPartlyClearNight');
+                }
+                else if(data.weatherObj.weatherCond === 'Mostly cloudy') {
+                    setBackground('weatherMostlyClearNight');
+                }
+                else if(data.weatherObj.weatherCond === 'Cloudy') {
+                    setBackground('weatherCloudyNight');
+                }
+                else if(data.weatherObj.weatherCond === 'Overcast') {
+                    setBackground('weatherOvercastNight');
+                }
+                else if(data.weatherObj.weatherCond === 'Shower' || data.weatherObj.weatherCond === 'Rain') {
+                    setBackground('weatherRainNight');
+                }
+                else if(data.weatherObj.weatherCond === 'Fog') {
+                    setBackground('weatherFogNight');
+                }
+                else if(data.weatherObj.weatherCond === 'Snow') {
+                    setBackground('weatherSnowNight');
+                }
+                else{
+                    setBackground('weatherClearNight');
+                }
             }
-            else if(data.weatherObj.weatherDesc === 'Rain') {
-                setBackground('weatherRainMorn');
-            }
-            else{
-                setBackground('weatherFoggyMorn');
-            }
-        }
-        else {
-            if (data.weatherObj.weatherDesc === 'Clear') {
-                setBackground('weatherClearNight');
-            }
-            else if(data.weatherObj.weatherDesc === 'Clouds') {
-                setBackground('weatherCloudyNight');
-            }
-            else if(data.weatherObj.weatherDesc === 'Rain') {
-                setBackground('weatherRainNight');
-            }
-            else{
-                setBackground('weatherFoggyNight');
-            }
-        }
-    }, [data.weatherObj.timezoneHour]);
+       
+    }, [data.weatherObj.timeHour]);
 
-    async function refresh() {
-        setWthrload(true);
-        const temp: weatherData = await Data(data.weatherObj.name);
-        data.myDispatch({type : 'SET', payload: { city: data.state.city, data: temp, validate: true}});
-        setInterval( () => {
-            setWthrload(false);
-        }, 1000);
-        
+    console.log(data.weatherObj.weatherCond);
+
+    const back = () => {
+        data.dispatch({type: reducerActions.SET, payload: {city: '', data: null , validate: true }}); 
+        data.dispatch({type: reducerActions.RESETWORDSUGG})
     }
+    async function refresh() {
+        if(state.cityID !== undefined){
+            setWthrload(true);
+            const temp: weatherData = await Data(state.cityID, state.city);
+            data.dispatch({type : reducerActions.SET, payload: { city: state.city, data: temp, validate: true }});
+            setTimeout( () => {
+                setWthrload(false);
+            }, 1000);
+        }
+    }
+
 
     return (
         <div>
@@ -66,35 +102,23 @@ const Weather: React.FC<weather> = (data) => {
             </div>
             :    
 
-            <div id={background} className='weatherMain' >
+            <div id={background} className= 'weatherMain' >
                 <div className='weatherMainUpper'>
                     <div className='weatherIcons'>
-                        <ArrowBackIcon fontSize='inherit' onClick={() => data.myDispatch({type: 'SET', payload: {city: '', data: null , validate: true  }}) } />
+                        <ArrowBackIcon fontSize='inherit' onClick={() => back() } />
                         <RefreshIcon fontSize='inherit' onClick={() => refresh()} />
                     </div>
                     
                     <div className='weatherMainData'>
                         <h1>{data.weatherObj.name}</h1>
-                        <span>{data.weatherObj.weatherDesc}</span>
+                        <span>{data.weatherObj.weatherCond}</span>
                         <h2>{data.weatherObj.temp}<span>&#176;</span></h2>
                         <span>Last Updated</span>
-                        <span>{data.weatherObj.lastUpdateTime}</span>
+                        <span>{data.weatherObj.Time}</span>
                     </div>
                 </div>
 
                 <div className='weatherMainBottom'>
-                    <div>
-                        <div>
-                            <span>SUNRISE</span>
-                            <span>{data.weatherObj.sunRise}</span>
-                        </div>
-
-                        <div>
-                            <span>SUNSET</span>
-                            <span>{data.weatherObj.sunSet}</span>
-                        </div>
-                    </div>
-
                     <div>
                         <div>
                             <span>FEELS LIKE</span>
@@ -105,17 +129,29 @@ const Weather: React.FC<weather> = (data) => {
                             <span>HUMIDITY</span>
                             <span>{data.weatherObj.humidity}%</span>
                         </div>
-                    </div>    
+                    </div>
 
                     <div>
+                        <div>
+                            <span>WIND</span>
+                            <span>{data.weatherObj.wind} km/h</span>
+                        </div>
+
                         <div>
                             <span>PRESSURE</span>
                             <span>{data.weatherObj.pressure} hPa</span>
                         </div>
+                    </div>    
+
+                    <div>
+                        <div>
+                            <span>PRECIPITATION</span>
+                            <span>{data.weatherObj.precipitation} cm</span>
+                        </div>
 
                         <div>
-                            <span>VISIBILITY</span>
-                            <span>{data.weatherObj.visibility} km</span>
+                            <span>UV INDEX</span>
+                            <span>{data.weatherObj.UVindex}</span>
                         </div>
                     </div>
                 </div>

@@ -52,6 +52,22 @@ body{
     text-align: center;
     color: black;
   }
+
+  .weatherMain{
+    display: flex;
+    flex-direction: column;
+    background-repeat: no-repeat;
+    width: 100vw;
+    height: 100vh;
+    background-size: 300px;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: -1;
+  }
+
 }
 
 @media screen and (min-width: 641px) and (max-width: 1007px) {
@@ -104,11 +120,25 @@ body{
     color: black;
   }
 
+  .weatherMain{
+    display: flex;
+    flex-direction: column;
+    background-repeat: no-repeat;
+    width: 100vw;
+    height: 100vh;
+    background-size: 200px;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: -1;
+  }
+
 }
 
 @media screen and (max-width: 640px) {
   #displayMainNight{
-    /* background-image: url(./Animations/homeNightSmall.gif); */
     background-color: #070b47;
     width: 100vw;
     height: 100vh;
@@ -132,7 +162,6 @@ body{
   }
 
   #displayMainMorn{
-    /* background-image: url(./Animations/homeMorn.gif); */
     background-color: #55aacd;
     width: 100vw;
     height: 100vh;
@@ -155,6 +184,21 @@ body{
     color: black;
   }
 
+  .weatherMain{
+    display: flex;
+    flex-direction: column;
+    background-repeat: no-repeat;
+    width: 100vw;
+    height: 100vh;
+    background-size: 150px;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: -1;
+  }
+
 }
 
 .display > :nth-child(3){
@@ -168,12 +212,45 @@ body{
   font-size: 35px;
 }
 
-.display > :nth-child(3) input{
-  margin-bottom: 10px;
+.display > :nth-child(3) div input{
+  /* margin-bottom: 10px; */
   padding: 7px 0 7px 7px;
   border: 0;
   border-radius: 14px;
   font-size: 15px;
+  font-weight: 600;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.display > :nth-child(3) div input:focus{
+  outline: none;
+}
+
+.display > :nth-child(3) div{
+  background-color: white;
+  color: black;
+  cursor: pointer;
+  padding: 0 10px;
+  border-radius: 20px;
+}
+
+.display > :nth-child(3) div ul{
+  padding: 0;
+  margin: 0;
+}
+
+.display > :nth-child(3) div ul li{
+  padding: 5px 10px;
+  margin-bottom: 8px;
+  text-align: center;
+  list-style: none;
+  border-bottom: 1.5px solid rgba(0, 0, 0, 0.678);
+  font-weight: 600;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.display > :nth-child(3) div ul li:hover{
+  background-color: #efefef;
 }
 
 .display > :nth-child(3) button{
@@ -197,6 +274,10 @@ body{
   text-decoration: none;
 }
 
+.display > :nth-child(3) p{
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-weight: 600;
+}
 /* for night */
 
 
@@ -204,27 +285,40 @@ body{
 
 /* Weather Component CSS Below */
 
-.weatherMain{
+/* .weatherMain{
   display: flex;
   flex-direction: column;
-
-}
+  background-repeat: no-repeat;
+  width: 100vw;
+  height: 100vh;
+  background-size: 250px;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: -1;
+} */
 
 .weatherMain > *{
   flex: 1 1 auto;
-  backdrop-filter: blur(2px) brightness(80%);
+  
 }
 
 .weatherMainUpper{
   display: flex;
-  flex-direction: row;
+  flex-direction: row-reverse;
   flex-wrap: wrap;
 }
 
 .weatherIcons{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end ;
   flex-basis: 33.333333%;
   max-width: 33.333333%;
   font-size: 30px;
+  margin-right: 20px;
 }
 
 .weatherIcons > *{
@@ -234,141 +328,6 @@ body{
   margin: 30px 0 0 30px;
   position: relative;
   background-image: linear-gradient(to right, rgba(118, 167, 187, 0.644), rgba(243, 243, 92, 0.698))
-}
-
-.weatherLoader{
-  padding-top: 40vh;
-  text-align: center;
-}
-
-#weatherClearMorn{
-  background-image: url(./Animations/clearMornWeather.svg);
-  background-repeat: no-repeat;
-  width: 100vw;
-  height: 100vh;
-  background-size: cover;
-  position: fixed;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  z-index: -1;
-}
-
-#weatherClearNight{
-  background-image: url(./Animations/clearNightWeather.svg);
-  background-repeat: no-repeat;
-  width: 100vw;
-  height: 100vh;
-  background-size: cover;
-  position: fixed;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  z-index: -1;
-}
-
-#weatherClearNight > * {
-  color: white;
-}
-
-#weatherFoggyMorn{
-  background-image: url(./Animations/foggyMornWeather.svg);
-  background-repeat: no-repeat;
-  width: 100vw;
-  height: 100vh;
-  background-size: cover;
-  position: fixed;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  z-index: -1;
-}
-
-
-#weatherFoggyNight{
-  background-image: url(./Animations/foggyNightWeather.svg);
-  background-repeat: no-repeat;
-  width: 100vw;
-  height: 100vh;
-  background-size: cover;
-  position: fixed;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  z-index: -1;
-}
-
-#weatherFoggyNight > *{
-  color: white;
-}
-
-#weatherCloudyMorn{
-  background-image: url(./Animations/cloudyMornWeather.svg);
-  background-repeat: no-repeat;
-  width: 100vw;
-  height: 100vh;
-  background-size: cover;
-  position: fixed;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  z-index: -1;
-}
-
-
-#weatherCloudyNight{
-  background-image: url(./Animations/cloudyNightWeather.svg);
-  background-repeat: no-repeat;
-  width: 100vw;
-  height: 100vh;
-  background-size: cover;
-  position: fixed;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  z-index: -1;
-}
-
-#weatherCloudyNight > *{
-  color: white;
-}
-
-#weatherRainMorn{
-  background-image: url(./Animations/rainMornWeather.svg);
-  background-repeat: no-repeat;
-  width: 100vw;
-  height: 100vh;
-  background-size: cover;
-  position: fixed;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  z-index: -1;
-}
-
-#weatherRainNight{
-  background-image: url(./Animations/rainNightWeather.svg);
-  background-repeat: no-repeat;
-  width: 100vw;
-  height: 100vh;
-  background-size: cover;
-  position: fixed;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  z-index: -1;
-}
-
-#weatherRainNight > *{
-  color: white;
 }
 
 .weatherMainData{
@@ -403,10 +362,105 @@ body{
 }
 
 
+.weatherLoader{
+  padding-top: 40vh;
+  text-align: center;
+}
+
+#weatherSunnyMorn{
+  background-image: url(./Animations/sunnyMornWeather.png);
+  background-color: #55aacd;
+}
+
+#weatherPartlySunnyMorn{
+  background-image: url(./Animations/intermittentCloudyMornWeather.png);
+  background-color: #55aacd;
+}
+
+#weatherMostlyCloudyMorn{
+  background-image: url(./Animations/mostlyCloudyMornWeather.png);
+  background-color: #55aacd;
+}
+
+#weatherCloudyMorn{
+  background-image: url(./Animations/cloudyWeather.png);
+  background-color: #55aacd;
+}
+
+#weatherOvercastMorn{
+  background-image: url(./Animations/overcastWeather.png);
+  background-color: #55aacd;
+}
+
+#weatherRainMorn{
+  background-image: url(./Animations/rainMornWeather.png);
+  background-color: #55aacd;
+}
+
+#weatherFogMorn{
+  background-image: url(./Animations/fogWeather.png);
+  background-color: #55aacd;
+}
+
+#weatherSnowMorn{
+  background-image: url(./Animations/flurryWeather.png);
+  background-color: #55aacd;
+}
+
+#weatherClearNight{
+  background-image: url(./Animations/clearNightWeather.png);
+  background-color: #070b47;
+  color: white;
+}
+
+
+#weatherPartlyClearNight{
+  background-image: url(./Animations/partlyCloudyNightWeather.png);
+  background-color: #070b47;
+  color: white;
+}
+
+#weatherMostlyClearNight{
+  background-image: url(./Animations/mostlyCloudyNightWeather.png);
+  background-color: #070b47;
+  color: white;
+}
+
+#weatherCloudyNight{
+  background-image: url(./Animations/cloudyWeather.png);
+  background-color: #070b47;
+  color: white;
+}
+
+#weatherOvercastNight{
+  background-image: url(./Animations/overcastWeather.png);
+  background-color: #070b47;
+  color: white;
+}
+
+#weatherFogNight{
+  background-image: url(./Animations/fogWeather.png);
+  background-color: #070b47;
+  color: white;
+}
+
+#weatherRainNight{
+  background-image: url(./Animations/rainMornWeather.png);
+  background-color: #070b47;
+  color: white;
+}
+
+#weatherSnowNight{
+  background-image: url(./Animations/flurryWeather.png);
+  background-color: #070b47;
+  color: white;
+}
+
 /* weatherBottom */
 
 .weatherMainBottom{
   width: 100vw;
+  /* backdrop-filter: blur(2px) brightness(80%); */
 }
 
 .weatherMainBottom > * {
@@ -446,12 +500,31 @@ body{
   }
 
   .weatherIcons{
+    flex-direction: column;
+    justify-content: flex-start;
+    margin-right: 0px;
     font-size: 25px;
   }
 
 }
 
 @media screen and (max-width: 320px){
+
+  .weatherMain{
+    display: flex;
+    flex-direction: column;
+    background-repeat: no-repeat;
+    width: 100vw;
+    height: 100vh;
+    background-size: 100px;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: -1;
+  }
+
   .weatherMainData{
     font-size: 10px;
   }
@@ -466,6 +539,9 @@ body{
   }
 
   .weatherIcons{
+    flex-direction: column;
+    justify-content: flex-start;
+    margin-right: 0px;
     font-size: 20px;
   }
 

@@ -1,17 +1,26 @@
+// https://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=${process.env.REACT_APP_MY_API_KEY}
+
+
 import { weatherData } from "../Types/Types";
 
-export const Data = async (city: string) => {
+export const Data = async (dataCityKey: number, dataCityName: string) => {
 
-    const api = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=${process.env.REACT_APP_MY_API_KEY}`);
+    const api = await fetch(`http://dataservice.accuweather.com/currentconditions/v1/${dataCityKey}?apikey=${process.env.REACT_APP_WEATHER_KEY}&details=true`);
     const data = await api.json();
 
-    console.log(data);
+    function getcurrentHour(eTime: number){
+        var b = new Date(eTime * 1000);
+        var hour = b.getHours();
+    
+        return hour;
+    }
 
     function timeConverter(UNIX_timestamp: number) {
         var a = new Date(UNIX_timestamp * 1000);
         var hour = a.getHours();
         var min = a.getMinutes();
         var time;
+        
         if (hour > 11) {
             if (hour === 12) {
                 if (min < 10) {
@@ -50,28 +59,27 @@ export const Data = async (city: string) => {
             }
 
         }
-
+    
         return time;
     }
 
-    console.log(timeConverter(data.timezone));
-
-    var timezone = new Date(data.timezone * 1000);
-    var hour = timezone.getHours();
-    
     let weather: weatherData = {
-        name: data.name,
-        feel: Math.round(data.main.feels_like - 273.15),
-        humidity: data.main.humidity,
-        pressure: data.main.pressure,
-        temp: Math.round(data.main.temp - 273.15),
-        visibility: data.visibility / 1000,
-        weatherDesc: data.weather[0].main,
-        sunRise: timeConverter(data.sys.sunrise),
-        sunSet: timeConverter(data.sys.sunset),
-        lastUpdateTime: timeConverter(data.dt),
-        timezoneHour: hour
+        name: dataCityName,
+        weatherCond: data[0].WeatherText,
+        feel: Math.round(data[0].RealFeelTemperature.Metric.Value),
+        humidity: data[0].RelativeHumidity,
+        pressure: data[0].Pressure.Metric.Value,
+        temp: Math.round(data[0].Temperature.Metric.Value),
+        wind: data[0].Wind.Speed.Metric.Value,
+        Time: timeConverter(data[0].EpochTime),
+        timeHour: getcurrentHour(data[0].EpochTime),
+        UVindex: data[0].UVIndex,
+        precipitation: data[0].PrecipitationSummary.Precipitation.Metric.Value,
+        isDay: data[0].IsDayTime,
+        weatherIcon: data[0].WeatherIcon
     }
+
+    console.log(weather);
 
     return weather;
 
