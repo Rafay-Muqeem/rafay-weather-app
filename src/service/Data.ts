@@ -5,7 +5,7 @@ import { weatherData } from "../Types/Types";
 
 export const Data = async (dataCityKey: number, dataCityName: string) => {
 
-    const api = await fetch(`http://dataservice.accuweather.com/currentconditions/v1/${dataCityKey}?apikey=${process.env.REACT_APP_WEATHER_KEY}&details=true`);
+    const api = await fetch(`https://dataservice.accuweather.com/currentconditions/v1/${dataCityKey}?apikey=${process.env.REACT_APP_WEATHER_KEY}&details=true`);
     const data = await api.json();
 
     function getcurrentHour(eTime: number) {

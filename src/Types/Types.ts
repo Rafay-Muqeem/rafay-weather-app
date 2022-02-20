@@ -16,24 +16,6 @@ export type weatherData = {
     weatherIcon: number
 }
 
-// checking
-
-interface city {
-    city: string;
-}
-
-interface data {
-    data: weatherData | null
-}
-
-interface validate {
-    validate: boolean;
-}
-
-// export type myState = city | validate | data;
-
-// checking
-
 export type reducerState = {
     cityID?: number,
     city: string,
@@ -68,12 +50,6 @@ interface resetWordSugg {
 
 
 export type reducerAction = reducerSetAction | reducerSetWordSuggAction | resetWordSugg
-
-// export type reducerAction = {
-//     type: reducerActions, 
-//     payload: reducerState
-// }
-
 
 export type myDispatchProps = reducerSetAction | reducerSetWordSuggAction | resetWordSugg
 

@@ -3,7 +3,6 @@ import { reducerActions, weather, weatherData } from '../Types/Types';
 import { Data } from '../service/Data';
 import SearchIcon from '@mui/icons-material/Search';
 import YoutubeSearchedForIcon from '@mui/icons-material/YoutubeSearchedFor';
-import RefreshIcon from '@mui/icons-material/Refresh';
 import CircularProgress from '@mui/material/CircularProgress';
 import { initialState, reducer } from '../Reducer/Reducer';
 
