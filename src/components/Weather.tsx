@@ -80,7 +80,6 @@ const Weather: React.FC<weather> = (data) => {
     }
     async function refresh() {
 
-        console.log("refresh")
         setWthrload(true);
         const temp: weatherData = await Data(data.weatherObj.id!, data.weatherObj.name!);
         data.dispatch({ type: reducerActions.SET, payload: { city: state.city, data: temp, validate: true } });
