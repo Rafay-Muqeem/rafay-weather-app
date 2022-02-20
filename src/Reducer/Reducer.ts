@@ -1,4 +1,4 @@
-import React,{ useReducer } from "react";
+import React, { useReducer } from "react";
 import { reducerState, reducerState2, reducerAction, myReducer, reducerActions, wordSuggForm } from "../Types/Types";
 
 export const initialState: reducerState = {
@@ -9,8 +9,8 @@ export const initialState: reducerState = {
     wordSuggArray: []
 }
 
-export const reducer  = (state: reducerState = initialState, action: reducerAction): reducerState  => {
-    switch(action.type){
+export const reducer = (state: reducerState = initialState, action: reducerAction): reducerState => {
+    switch (action.type) {
         case reducerActions.SET:
             return ({
                 city: action.payload.city,
@@ -20,22 +20,22 @@ export const reducer  = (state: reducerState = initialState, action: reducerActi
             });
 
         case reducerActions.SETWORDSUGG:
-            return({
+            return ({
                 city: state.city,
                 data: state.data,
                 validate: state.validate,
-                wordSuggArray: [action.payload  , ...state.wordSuggArray!]
+                wordSuggArray: [action.payload, ...state.wordSuggArray!]
             });
 
         case reducerActions.RESETWORDSUGG:
-            return({
+            return ({
                 city: state.city,
                 data: state.data,
                 validate: state.validate,
-                wordSuggArray : []
+                wordSuggArray: []
             })
         default:
-            return state               
+            return state
 
     }
 }

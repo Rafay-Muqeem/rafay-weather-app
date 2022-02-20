@@ -36,19 +36,19 @@ const Form = () => {
 
 
     useEffect(() => {
-        const delay = setTimeout( () => {
+        const delay = setTimeout(() => {
             async function wordSuggestion() {
                 if (state.city !== '') {
-    
+
                     dispatch({ type: reducerActions.RESETWORDSUGG });
-    
+
                     try {
                         let wordsArr = await Search(state.city);
 
-                        if(wordsArr.length === 0){
-                            dispatch({ type: reducerActions.SET, payload: { city: state.city, data: state.data, validate: false}})
+                        if (wordsArr.length === 0) {
+                            dispatch({ type: reducerActions.SET, payload: { city: state.city, data: state.data, validate: false } })
                         }
-                        else{
+                        else {
                             wordsArr.map((wordObj: any, ind: number) => {
 
                                 dispatch({
@@ -58,45 +58,44 @@ const Form = () => {
                                         stateName: wordObj.AdministrativeArea.LocalizedName,
                                         countryName: wordObj.Country.LocalizedName
                                     }
-        
+
                                 })
 
-                                dispatch({ type: reducerActions.SET, payload: { city: state.city, data: state.data, validate: true}})
-        
+                                dispatch({ type: reducerActions.SET, payload: { city: state.city, data: state.data, validate: true } })
+
                             });
                         }
-                        
+
                     }
-    
+
                     catch (e) {
                         setServerErr(true);
                         setTimeout(() => {
                             setServerErr(false);
                         }, 5000)
                     }
-    
+
                 }
                 else {
                     dispatch({ type: reducerActions.RESETWORDSUGG });
-                    dispatch({ type: reducerActions.SET, payload: { city: state.city, data: state.data, validate: true}})
+                    dispatch({ type: reducerActions.SET, payload: { city: state.city, data: state.data, validate: true } })
                 }
             }
             wordSuggestion();
-            
+
         }, 1200);
 
         return () => clearTimeout(delay)
-        
+
 
     }, [state.city]);
 
-    async function wthrData(getCityId: number , getCityName: string ) {
-        
+    async function wthrData(getCityId: number, getCityName: string) {
+
         if (getCityId !== undefined && getCityName !== undefined) {
             try {
                 const temp: weatherData = await Data(getCityId, getCityName);
                 dispatch({ type: reducerActions.SET, payload: { city: getCityName, data: temp, validate: true } });
-                
             }
             catch (e) {
                 dispatch({ type: reducerActions.SET, payload: { city: '', data: null, validate: false } });
@@ -125,7 +124,7 @@ const Form = () => {
 
                             <div>
                                 <ul>
-                                    {state.wordSuggArray.map((wordObj: wordSuggForm, ind: number) => {
+                                    {state.wordSuggArray.map((wordObj: wordSuggForm) => {
 
                                         return (
                                             <li key={wordObj.cityId} onClick={() => Setter(wordObj.cityId, wordObj.cityName)} >{wordObj.cityName}, {wordObj.stateName}, {wordObj.countryName} </li>
@@ -139,7 +138,7 @@ const Form = () => {
                             : null}
                     </div>
                     {!state.validate ? <p>No Results Found</p> : null}
-                    {serverErr? <p>Internal Server Error</p> : null}
+                    {serverErr ? <p>Internal Server Error</p> : null}
                 </div>
             }
 

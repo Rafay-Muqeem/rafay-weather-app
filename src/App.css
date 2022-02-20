@@ -285,21 +285,6 @@ body{
 
 /* Weather Component CSS Below */
 
-/* .weatherMain{
-  display: flex;
-  flex-direction: column;
-  background-repeat: no-repeat;
-  width: 100vw;
-  height: 100vh;
-  background-size: 250px;
-  position: fixed;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  z-index: -1;
-} */
-
 .weatherMain > *{
   flex: 1 1 auto;
   

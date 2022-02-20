@@ -8,10 +8,10 @@ export const Data = async (dataCityKey: number, dataCityName: string) => {
     const api = await fetch(`http://dataservice.accuweather.com/currentconditions/v1/${dataCityKey}?apikey=${process.env.REACT_APP_WEATHER_KEY}&details=true`);
     const data = await api.json();
 
-    function getcurrentHour(eTime: number){
+    function getcurrentHour(eTime: number) {
         var b = new Date(eTime * 1000);
         var hour = b.getHours();
-    
+
         return hour;
     }
 
@@ -20,7 +20,7 @@ export const Data = async (dataCityKey: number, dataCityName: string) => {
         var hour = a.getHours();
         var min = a.getMinutes();
         var time;
-        
+
         if (hour > 11) {
             if (hour === 12) {
                 if (min < 10) {
@@ -59,11 +59,12 @@ export const Data = async (dataCityKey: number, dataCityName: string) => {
             }
 
         }
-    
+
         return time;
     }
 
     let weather: weatherData = {
+        id: dataCityKey,
         name: dataCityName,
         weatherCond: data[0].WeatherText,
         feel: Math.round(data[0].RealFeelTemperature.Metric.Value),
@@ -78,8 +79,6 @@ export const Data = async (dataCityKey: number, dataCityName: string) => {
         isDay: data[0].IsDayTime,
         weatherIcon: data[0].WeatherIcon
     }
-
-    console.log(weather);
 
     return weather;
 

@@ -1,5 +1,6 @@
 
 export type weatherData = {
+    id?: number,
     name?: string,
     weatherCond: string,
     feel: number,
@@ -35,14 +36,14 @@ interface validate {
 
 export type reducerState = {
     cityID?: number,
-    city: string ,
+    city: string,
     data: weatherData | null,
     validate: boolean,
-    wordSuggArray? : wordSuggForm[]
+    wordSuggArray?: wordSuggForm[]
 }
 
 export type reducerState2 = {
-    wordSuggArray : wordSuggForm[]
+    wordSuggArray: wordSuggForm[]
 }
 
 export enum reducerActions {
@@ -66,7 +67,7 @@ interface resetWordSugg {
 }
 
 
-export type reducerAction = reducerSetAction | reducerSetWordSuggAction | resetWordSugg 
+export type reducerAction = reducerSetAction | reducerSetWordSuggAction | resetWordSugg
 
 // export type reducerAction = {
 //     type: reducerActions, 
@@ -74,7 +75,7 @@ export type reducerAction = reducerSetAction | reducerSetWordSuggAction | resetW
 // }
 
 
-export type myDispatchProps = reducerSetAction | reducerSetWordSuggAction | resetWordSugg 
+export type myDispatchProps = reducerSetAction | reducerSetWordSuggAction | resetWordSugg
 
 
 
