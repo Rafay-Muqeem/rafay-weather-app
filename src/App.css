@@ -357,6 +357,11 @@ body{
   background-color: #55aacd;
 }
 
+#weatherHazzySunshineMorn{
+  background-image: url(./Animations/hazzySunshine.png);
+  background-color: #55aacd;
+}
+
 #weatherPartlySunnyMorn{
   background-image: url(./Animations/intermittentCloudyMornWeather.png);
   background-color: #55aacd;

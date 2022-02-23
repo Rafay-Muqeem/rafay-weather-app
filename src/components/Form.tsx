@@ -99,6 +99,10 @@ const Form = () => {
             }
             catch (e) {
                 dispatch({ type: reducerActions.SET, payload: { city: '', data: null, validate: false } });
+                setServerErr(true);
+                setTimeout(() => {
+                    setServerErr(false);
+                }, 5000);
             }
         }
         setFormload(false);

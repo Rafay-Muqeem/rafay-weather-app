@@ -17,7 +17,10 @@ const Weather: React.FC<weather> = (data) => {
             if (data.weatherObj.weatherCond === 'Sunny' || data.weatherObj.weatherCond === 'Mostly sunny') {
                 setBackground('weatherSunnyMorn');
             }
-            else if (data.weatherObj.weatherCond === 'Partly Sunny' || data.weatherObj.weatherCond === 'Intermittent clouds') {
+            else if (data.weatherObj.weatherCond === 'Hazy sunshine') {
+                setBackground('weatherHazzySunshineMorn');
+            }
+            else if (data.weatherObj.weatherCond === 'Partly Sunny' || data.weatherObj.weatherCond === 'Intermittent clouds' || data.weatherObj.weatherCond === 'Clouds and sun') {
                 setBackground('weatherPartlySunnyMorn');
             }
             else if (data.weatherObj.weatherCond === 'Mostly cloudy') {
@@ -32,10 +35,10 @@ const Weather: React.FC<weather> = (data) => {
             else if (data.weatherObj.weatherCond === 'Shower' || data.weatherObj.weatherCond === 'Rain') {
                 setBackground('weatherRainMorn');
             }
-            else if (data.weatherObj.weatherCond === 'Foggy') {
+            else if (data.weatherObj.weatherCond === 'Foggy' || data.weatherObj.weatherCond === 'Light fog') {
                 setBackground('weatherFogMorn');
             }
-            else if (data.weatherObj.weatherCond === 'Snow') {
+            else if (data.weatherObj.weatherCond === 'Snow' || data.weatherObj.weatherCond === 'Light snow') {
                 setBackground('weatherSnowMorn');
             }
             else {
@@ -61,7 +64,7 @@ const Weather: React.FC<weather> = (data) => {
             else if (data.weatherObj.weatherCond === 'Shower' || data.weatherObj.weatherCond === 'Rain') {
                 setBackground('weatherRainNight');
             }
-            else if (data.weatherObj.weatherCond === 'Foggy') {
+            else if (data.weatherObj.weatherCond === 'Foggy' || data.weatherObj.weatherCond === 'Light fog') {
                 setBackground('weatherFogNight');
             }
             else if (data.weatherObj.weatherCond === 'Snow') {
